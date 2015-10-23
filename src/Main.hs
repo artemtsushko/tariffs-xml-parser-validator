@@ -13,7 +13,8 @@
 -----------------------------------------------------------------------------
 
 module Main (
-    main
+    main,
+    Tariff(..)
 ) where
 
 import Text.XML.HaXml
@@ -26,4 +27,20 @@ import Text.XML.HaXml
 main :: IO ()
 main = return ()
 
-data Tariff = Tariff {}
+data Tariff = Tariff { name         :: String
+                     , operator     :: String
+                     , payroll      :: Float
+                     , callPrices   :: CallPrices
+                     , smsPrice     :: Float
+                     , parameters   :: Parameters
+                     } deriving (Show)
+
+data CallPrices = CallPrices { withinNetwork        :: Float
+                             , toOtherNetworks      :: Float
+                             , toFixedLineNumbers   :: Float
+                             } deriving (Show)
+
+data Parameters = Parameters { favoiriteNumbers :: Int
+                             , pricing          :: String -- ^ second | minute
+                             , subscribeFee     :: Float
+                             } deriving (Show)
