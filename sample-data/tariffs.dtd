@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT tariffs (tariff*)>
+<!ELEMENT tariff (name,operator,payroll,callPrices,smsPrice,parameters)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT operator (#PCDATA)>
+<!ELEMENT payroll (#PCDATA)>
+<!ELEMENT callPrices (withinNetwork,toOtherNetworks,toFixedLineNumbers)>
+<!ELEMENT withinNetwork (#PCDATA)>
+<!ELEMENT toOtherNetworks (#PCDATA)>
+<!ELEMENT toFixedLineNumbers (#PCDATA)>
+<!ELEMENT smsPrice (#PCDATA)>
+<!ELEMENT parameters (favoiriteNumbers,pricing,subscribeFee)>
+<!ELEMENT favoiriteNumbers (#PCDATA)>
+<!ELEMENT pricing EMPTY>
+<!ELEMENT subscribeFee (#PCDATA)>
+
+<!ATTLIST tariff id ID #REQUIRED>
+<!ATTLIST pricing unit (second|minute) #REQUIRED>

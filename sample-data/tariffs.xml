@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tariffs SYSTEM "tariffs.dtd">
+
+<tariffs>
+
+	<tariff id="ks1">
+		<name>Смартфон</name>
+		<operator>Київстар</operator>
+		<payroll>50</payroll>
+		<callPrices>
+			<withinNetwork>0</withinNetwork>
+			<toOtherNetworks>0.60</toOtherNetworks>
+			<toFixedLineNumbers>1.50</toFixedLineNumbers>
+		</callPrices>
+		<smsPrice>0.50</smsPrice>
+		<parameters>
+			<favoiriteNumbers>0</favoiriteNumbers>
+			<pricing unit="second"/>
+			<subscribeFee>20</subscribeFee>
+		</parameters>
+	</tariff>
+
+	<tariff id="ks2">
+		<name>Смартфон+</name>
+		<operator>Київстар</operator>
+		<payroll>95</payroll>
+		<callPrices>
+			<withinNetwork>0</withinNetwork>
+			<toOtherNetworks>0</toOtherNetworks>
+			<toFixedLineNumbers>1.50</toFixedLineNumbers>
+		</callPrices>
+		<smsPrice>0.50</smsPrice>
+		<parameters>
+			<favoiriteNumbers>0</favoiriteNumbers>
+			<pricing unit="second"/>
+			<subscribeFee>20</subscribeFee>
+		</parameters>
+	</tariff>
+
+	<tariff id="ks3">
+		<name>Смартфон Екстра</name>
+		<operator>Київстар</operator>
+		<payroll>150</payroll>
+		<callPrices>
+			<withinNetwork>0</withinNetwork>
+			<toOtherNetworks>0</toOtherNetworks>
+			<toFixedLineNumbers>1.50</toFixedLineNumbers>
+		</callPrices>
+		<smsPrice>0</smsPrice>
+		<parameters>
+			<favoiriteNumbers>0</favoiriteNumbers>
+			<pricing unit="second"/>
+			<subscribeFee>0</subscribeFee>
+		</parameters>
+	</tariff>
+
+	<tariff id="mts1">
+		<name>Просто Супер Перший</name>
+		<operator>МТС</operator>
+		<payroll>0</payroll>
+		<callPrices>
+			<withinNetwork>0</withinNetwork>
+			<toOtherNetworks>0.50</toOtherNetworks>
+			<toFixedLineNumbers>1.50</toFixedLineNumbers>
+		</callPrices>
+		<smsPrice>1</smsPrice>
+		<parameters>
+			<favoiriteNumbers>0</favoiriteNumbers>
+			<pricing unit="minute"/>
+			<subscribeFee>15</subscribeFee>
+		</parameters>
+	</tariff>
+
+	<tariff id="mts2">
+		<name>Смартфон 3G Перший</name>
+		<operator>МТС</operator>
+		<payroll>15</payroll>
+		<callPrices>
+			<withinNetwork>0</withinNetwork>
+			<toOtherNetworks>0.35</toOtherNetworks>
+			<toFixedLineNumbers>1.50</toFixedLineNumbers>
+		</callPrices>
+		<smsPrice>1</smsPrice>
+		<parameters>
+			<favoiriteNumbers>0</favoiriteNumbers>
+			<pricing unit="minute"/>
+			<subscribeFee>20</subscribeFee>
+		</parameters>
+	</tariff>
+
+</tariffs>
