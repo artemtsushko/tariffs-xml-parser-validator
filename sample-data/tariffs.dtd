@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!ELEMENT tariffs (tariff*)>
-<!ELEMENT tariff (name,operator,payroll,callPrices,smsPrice,parameters)>
-<!ELEMENT name (#PCDATA)>
+<!ELEMENT tariff (tariffName,operator,payroll,callPrices,smsPrice,parameters)>
+<!ELEMENT tariffName (#PCDATA)>
 <!ELEMENT operator (#PCDATA)>
 <!ELEMENT payroll (#PCDATA)>
 <!ELEMENT callPrices (withinNetwork,toOtherNetworks,toFixedLineNumbers)>

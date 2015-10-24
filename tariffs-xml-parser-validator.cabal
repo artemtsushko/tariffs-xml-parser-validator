@@ -6,9 +6,7 @@ license: BSD3
 copyright: (c) Artem Tsushko, 2015
 maintainer: artem.tsushko@gmail.com
 stability: provisional
-synopsis: initializes a list of objects with information from an XML file, validates the file over DTD or XSD
-description:
-
+synopsis: initializes a list of objects with information from an XML file, validates the file over DTD
 author: Artem Tsushko
 
 executable tariffs-xml-parser-validator
@@ -17,18 +15,9 @@ executable tariffs-xml-parser-validator
         QuickCheck -any,
         base -any,
         doctest -any,
-        HaXml
+        HaXml -any
     default-language: Haskell2010
     hs-source-dirs: src
-    ghc-options: -ferror-spans
-
-test-suite test-tariffs-xml-parser-validator
-    type: exitcode-stdio-1.0
-    main-is: Main.hs
-    build-depends:
-        QuickCheck -any,
-        base -any,
-        doctest -any
-    default-language: Haskell2010
-    hs-source-dirs: test
+    other-modules:
+        Tariffs
     ghc-options: -ferror-spans

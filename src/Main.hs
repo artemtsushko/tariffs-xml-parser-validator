@@ -1,46 +1,48 @@
 -----------------------------------------------------------------------------
---
+-- |
 -- Module      :  Main
 -- Copyright   :  (c) Artem Tsushko, 2015
 -- License     :  BSD3
 --
 -- Maintainer  :  artem.tsushko@gmail.com
 -- Stability   :  provisional
--- Portability :
+-- Portability :  portable
 --
--- |
+--
 --
 -----------------------------------------------------------------------------
 
 module Main (
-    main,
-    Tariff(..)
+    main
 ) where
 
-import Text.XML.HaXml
+import Control.Monad (mapM_)
+import Data.Maybe  (fromJust)
+import System.Environment (getArgs)
+import System.IO (readFile)
+import Text.XML.HaXml.Parse (xmlParse, dtdParse)
+import Text.XML.HaXml.Posn (posInNewCxt,noPos)
+import Text.XML.HaXml.Util (docContent, contentElem)
+import Text.XML.HaXml.Validate (partialValidate)
+import Text.XML.HaXml.XmlContent (fromXml)
+import Tariffs
 
--- This strange looking comment adds code only needed when running the
--- doctest tests embedded in the comments
--- $setup
--- >>> import Data.List (stripPrefix)
-
+-- | Parses XML file and validates it over DTD
 main :: IO ()
-main = return ()
-
-data Tariff = Tariff { name         :: String
-                     , operator     :: String
-                     , payroll      :: Float
-                     , callPrices   :: CallPrices
-                     , smsPrice     :: Float
-                     , parameters   :: Parameters
-                     } deriving (Show)
-
-data CallPrices = CallPrices { withinNetwork        :: Float
-                             , toOtherNetworks      :: Float
-                             , toFixedLineNumbers   :: Float
-                             } deriving (Show)
-
-data Parameters = Parameters { favoiriteNumbers :: Int
-                             , pricing          :: String -- ^ second | minute
-                             , subscribeFee     :: Float
-                             } deriving (Show)
+main = do
+    (xmlPath : dtdPath: _) <- getArgs
+    xmlContents <- readFile xmlPath
+    dtdContents <- readFile dtdPath
+    let parsed = xmlParse xmlPath xmlContents
+        dtd = dtdParse dtdPath dtdContents
+        xml = contentElem . docContent noPos $ parsed
+        errors = partialValidate (fromJust dtd) xml
+    if null errors
+    then do
+        putStrLn "Validation successful!\n"
+        let Right (Tariffs tariffs) = fromXml parsed
+        mapM_ print tariffs
+    else do
+        putStrLn "Validation encountered errors:"
+        mapM_ putStrLn errors
+    return ()
